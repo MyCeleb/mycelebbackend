@@ -10,7 +10,7 @@ class Api::V1::UsersController < ApplicationController
         end
     end
     def profile
-        render json: { user: UserSerializer.new(current_user) }, status: :accepted
+        render json: { user: UserSerializer.new(current_user , {include: [:profile]})}, status: :accepted
     end
 
     private

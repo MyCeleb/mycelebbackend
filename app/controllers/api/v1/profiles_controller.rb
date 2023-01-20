@@ -14,6 +14,12 @@ class Api::V1::ProfilesController < ApplicationController
     render json: @profile
   end
 
+  def my_profile
+    @profile = Profile.find_by(user_id: params[:user_id])
+    render json: @profile
+  end
+  
+
   # POST /profiles
   def create
     @profile = Profile.create(profile_params)
