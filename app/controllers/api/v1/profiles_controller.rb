@@ -11,12 +11,12 @@ class Api::V1::ProfilesController < ApplicationController
 
   # GET /profiles/1
   def show
-    render json: @profile
+    render json: @profile , include: [:user, :rates]
   end
 
   def my_profile
     @profile = Profile.find_by(user_id: params[:user_id])
-    render json: @profile
+    render json: @profile , include: [:user, :rates]
   end
   
 
